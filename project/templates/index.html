@@ -7,9 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto&display=swap" rel="stylesheet">
+    <style type="text/css">
+      div.clickEffect{
+	      position:fixed;
+	      box-sizing:border-box;
+	      border-style:solid;
+	      border-color:white;
+	      border-radius:50%;
+	      animation:clickEffect 0.6s ease-out;
+	      z-index:99999;
+      }
+      @keyframes clickEffect{
+	      0% {
+		      opacity:1;
+		      width:0.5em; height:0.5em;
+		      margin:-0.25em;
+		      order-width:0.5rem;
+	      }
+	      100% {
+		      opacity:0.2;
+		      width:10em; height:10em;
+		      margin:-5.5em;
+		      border-width:0.03rem;
+	      }
+      }
+    </style>
     <title>Eco Smart Vietnam</title>
     <link
       rel="icon"
@@ -32,5 +56,15 @@
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript">
+      function clickEffect(e){
+	      var d=document.createElement("div");
+	      d.className="clickEffect";
+	      d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+	      document.body.appendChild(d);
+	      d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+      }
+      document.addEventListener('click',clickEffect);
+    </script>
   </body>
 </html>
