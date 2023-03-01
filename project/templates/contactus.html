@@ -45,9 +45,12 @@
   <body style="font-family: 'Heebo', sans-serif">
     {% include 'navbar.html' %}
 
+    <button onclick="changeLanguage('eng')">English</button>
+    <button onclick="changeLanguage('vnm')">Vietnamese</button>
+
     <div class="contact-us-body">
       <div class="content-left flex-item">
-        <h1 class="scripts1">Let's chat.</h1>
+        <h1 class="scripts1" id="siteContent1">Let's chat.</h1>
         <h2 class="scripts2">We want to hear from you!</h2>
       </div>
 
@@ -86,5 +89,28 @@
       </div>
     </div>
     {% include 'footer1.html' %}
+
+    <script>
+      function changeLanguage(lang) {
+        location.hash = lang;
+        location.reload();
+      }
+
+      var language = {
+        eng: {
+          script1: "Let's chat.",
+        },
+
+        vnm: {
+          script1: "Hay cung tro chuyen.",
+        },
+      };
+
+      if (window.location.hash) {
+        if (window.location.hash == "#vnm") {
+          siteContent1.textContent = language.vnm.script1;
+        }
+      }
+    </script>
   </body>
 </html>
